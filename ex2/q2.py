@@ -2,6 +2,7 @@ def print_type(a):
     print(type(a), end='\n')
 
 
+# 输出所有类型
 print_type(1)
 print_type(1.0)
 print_type('')
