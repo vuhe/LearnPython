@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import math
 
 r = int(input("请输入圆的半径："))

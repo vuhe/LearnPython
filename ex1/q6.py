@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 str1 = input("第一个字符串：")
 str2 = input("第二个字符串：")
 
