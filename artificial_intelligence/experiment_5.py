@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-from ai5 import *
+from artificial_intelligence import *
 
 x = [i / 100 for i in range(900)]
 y = [0 for i in range(900)]
