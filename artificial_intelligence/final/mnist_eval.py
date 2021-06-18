@@ -1,3 +1,5 @@
+import os  # os模块是对操作系统进行调用的接
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # 禁用log
 import tensorflow as tf
 import numpy as np
 
@@ -11,14 +13,14 @@ from artificial_intelligence.final import read_data_sets
 def evaluate(mnist):
     with tf.Graph().as_default() as g:  # 将默认图设为g
         # 定义输入输出的格式
-        Validate_SIZE = mnist.validation.num_examples
-        x = tf.compat.v1.placeholder(tf.float32, [Validate_SIZE, mnist_inference.IMAGE_SIZE,
+        validate_size = mnist.validation.num_examples
+        x = tf.compat.v1.placeholder(tf.float32, [validate_size, mnist_inference.IMAGE_SIZE,
                                                   mnist_inference.IMAGE_SIZE, mnist_inference.NUM_CHANNELS],
                                      name='x-input')
         y_ = tf.compat.v1.placeholder(tf.float32, [None, mnist_inference.OUTPUT_NODE], name='y-input')
         xs = mnist.validation.images
         # 将输入的测试数据调整为一个三维矩阵
-        reshaped_xs = np.reshape(xs, (Validate_SIZE, mnist_inference.IMAGE_SIZE,
+        reshaped_xs = np.reshape(xs, (validate_size, mnist_inference.IMAGE_SIZE,
                                       mnist_inference.IMAGE_SIZE, mnist_inference.NUM_CHANNELS))
         validate_feed = {x: reshaped_xs, y_: mnist.validation.labels}
 
@@ -67,4 +69,5 @@ def main(argv=None):
 
 
 if __name__ == '__main__':
+    tf.get_logger().disabled = True
     tf.compat.v1.app.run()

@@ -15,3 +15,5 @@
 5. `__init__.py` 文件中是系统处理文件（缺失类库），与实验无关，可以作为已知条件使用
 
 6. 缺失文件官网[下载地址](http://yann.lecun.com/exdb/mnist/)
+
+7. 输出信息存于 `/artificial_intelligence/final/mnist_data/log.txt`

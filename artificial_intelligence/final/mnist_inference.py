@@ -1,5 +1,7 @@
 # 定义前向传播的过程以及神经网络中的参数
 
+import os  # os模块是对操作系统进行调用的接
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # 禁用log
 import tensorflow as tf
 
 INPUT_NODE = 784  # 输入层的节点数，图片为28*28，为图片的像素

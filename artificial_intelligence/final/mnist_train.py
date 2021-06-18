@@ -1,6 +1,7 @@
 # 定义神经网络的训练过程
 
-import os  # os模块是对操作系统进行调用的接口
+import os  # os模块是对操作系统进行调用的接
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # 禁用log
 import tensorflow as tf
 import numpy as np
 # 加载mnist_inference.py中定义的常量和前向传播的函数
@@ -13,10 +14,10 @@ tf.compat.v1.disable_eager_execution()
 # 配置神经网络的参数
 BATCH_SIZE = 100  # 一个训练batch中的训练数据个数，数字越小，越接近随机梯度下降，越大越接近梯度下降
 LEARNING_RATE_BASE = 0.01  # 基础的学习率
-LEARNING_RATE_DECAY = 0.99  # 学习率的衰减率
+LEARNING_RATE_DECAY = 0.98  # 学习率的衰减率
 REGULARIZATION_RATE = 0.0001  # 描述网络复杂度的正则化向在损失函数中的系数
 TRAINING_STEPS = 30000  # 训练轮数
-MOVING_AVERAGE_DECAY = 0.99  # 滑动平均衰减率
+MOVING_AVERAGE_DECAY = 0.98  # 滑动平均衰减率
 # 模型保存的路径和文件名
 MODEL_SAVE_PATH = "./mnist_data"
 MODEL_NAME = "mnist.ckpt"
@@ -74,7 +75,7 @@ def train(mnist):
             _, loss_value, step = sess.run([train_op, loss, global_step],
                                            feed_dict={x: reshaped_xs, y_: ys})
             # 每1000轮保存一次模型
-            if i % 1000 == 0:
+            if i % 5000 == 0:
                 # 输出当前的训练情况，只输出了网络在当前训练batch上的损失函数大小
                 print("After %d training step(s), loss on training batch is %g," % (step, loss_value))
                 # 保存当前的网络，给出了global_step参数，这样可以让每个保存网络的文件名末尾加上训练的轮数
@@ -88,4 +89,5 @@ def main(argv=None):
 
 
 if __name__ == '__main__':
+    tf.get_logger().disabled = True
     tf.compat.v1.app.run()

@@ -1,5 +1,6 @@
 import gzip
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # 禁用log
 
 import numpy
 from six.moves import xrange  # pylint: disable=redefined-builtin
