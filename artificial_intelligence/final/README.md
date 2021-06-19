@@ -8,4 +8,4 @@
 
 4. `tf.keras.datasets.mnist` 会自动下载（google服务器中的mnist）数据集，请确保网络连接
 
-5. 直接运行 `mnist_train.py` 中的代码即可训练
+5. `mnist_le_net.py` 代码是未优化， `mnist_cnn.py` 为优化后
