@@ -28,25 +28,19 @@ network = Sequential([
     # Flatten层 (F6)
     layers.Flatten(),
     # 增加的连接层，用于调整准确率
-    layers.Dense(200, activation=tf.nn.relu),
-    layers.Dense(100, activation=tf.nn.relu),
-    # 全连接层2
+    layers.Dense(1000, activation=tf.nn.relu),
     layers.Dense(10, activation=tf.nn.softmax)
 ])
+network.summary()
 
+# 编译
+network.compile(optimizer='adam', metrics=["accuracy"],
+                loss=losses.sparse_categorical_crossentropy)
+# 模型训练 训练30个epoch
+network.fit(trainImage, trainLabel,
+            epochs=30, validation_split=0.1)
 
-def run():
-    network.summary()
-
-    # 编译
-    network.compile(optimizer='adam', metrics=["accuracy"],
-                    loss=losses.sparse_categorical_crossentropy)
-    # 模型训练 训练30个epoch
-    network.fit(trainImage, trainLabel,
-                epochs=30, validation_split=0.1)
-
-    # 模型保存
-    network.save('./mnist_data/model.h5')
-    print('The train model saved.')
-    del network
-
+# 模型保存
+network.save('./mnist_data/model.h5')
+print('The train model saved.')
+del network
