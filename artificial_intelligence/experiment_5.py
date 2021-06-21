@@ -25,7 +25,7 @@ def fitness(population, aim_function):
 
 
 def selection(population, value):
-    # 轮盘赌选择
+    # 轮盘选择
     fitness_sum = []
     for i in range(len(value)):
         if i == 0:
